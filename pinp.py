@@ -6,7 +6,7 @@ reqs; passes selected arguements to isvalid(); displays "msg" as required'''
 def grinp(prompt,msg=None,ok='anso',fi=None,hi=None,lo=None,mu=None):
     validInput=input(prompt)
     while not isvalid(validInput,ok,fi,hi,lo,mu):
-        if message!=None: print(msg)
+        if msg!=None: print(msg)
         validInput=(input(prompt))
     return validInput
 
