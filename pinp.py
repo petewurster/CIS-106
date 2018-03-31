@@ -1,3 +1,5 @@
+##              (p)ete's (inp)ut module
+
 '''------------- grinp():
 "prompt" user & loop to (g)et (r)ight (inp)ut from user based on validation
 reqs; passes selected arguements to isvalid(); displays "msg" as required'''
@@ -36,4 +38,3 @@ def isvalid(test,ok='anso',fi=None,hi=None,lo=None,mu=None):
         if test not in mu: return False
     #only one way this returns True!!!
     return True
-
