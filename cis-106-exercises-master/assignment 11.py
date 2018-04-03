@@ -58,6 +58,7 @@ def calculate():
 def reset():
     slide.set(30)
     total_text.set('Total Amount:')
+    amount.delete(0,'end')      ##########
 
 
     #build/pack entry frame
