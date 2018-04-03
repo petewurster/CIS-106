@@ -58,20 +58,6 @@ def calculate():
 def reset():
     slide.set(30)
     total_text.set('Total Amount:')
-    amount.delete(0,'end')      ##########
-
-
-    #build/pack entry frame
-##    fr_entry=tki.Frame(main)
-##    entry_label=tki.Label(fr_entry,text='Enter bill amount:   $')
-##    global amount
-##    amount=tki.Entry(fr_entry,width=8)
-##    entry_label.pack(side='left')
-##    amount.pack(side='left')
-##
-##    fr_entry.pack(side='top')
-
-    ##fr_entry=tki.Frame(main)
-    ##amount=tki.Entry(fr_entry,width=8)
+    amount.delete(0,'end')      ########## try #####   amount=tki.StringVar()
 
 assignment11()
