@@ -59,7 +59,7 @@ def assignment11():
     fr_entry.pack(side='top')
     fr_slide.pack()
     fr_button.pack(side='bottom')
-###    fr_switch.pack(side='left')###
+    fr_switch.pack(side='left')###
 
     #set init values
     reset()
