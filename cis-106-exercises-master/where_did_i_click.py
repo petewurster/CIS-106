@@ -1,15 +1,11 @@
 import tkinter as t
 
-def star():
+def where():
     main=t.Tk()
-    main.wm_title('star')
     main.bind('<Button 1>',click)
-    canvas=t.Canvas(main,width=300,height=300,background='grey94')
+    canvas=t.Canvas(main,width=300,height=300)
     canvas.pack()
-
     global startX,startY
-    
-
     
     t.mainloop()
 
@@ -19,4 +15,4 @@ def click(eventorigin):
     print(startX,startY)
 
 
-star()
+where()
