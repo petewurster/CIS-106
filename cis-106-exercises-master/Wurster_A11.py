@@ -28,8 +28,7 @@ def assignment11():
     global slide
     slide=tki.Scale(fr_slide,from_=0,to=50,orient='horizontal',
                     tickinterval=10,length=150)
-    global total
-    global total_text
+    global total,total_text
     total_text=tki.StringVar()
     total_label=tki.Label(fr_slide,textvariable=total_text)
     slide_label.pack()
@@ -47,12 +46,11 @@ def assignment11():
 
     #build/pack check box to switch on tax###
     fr_switch=tki.Frame(main)###
-    global switch###
-    global switch_text###
+    global switch,switch_text,tax###
     switch_text=tki.StringVar()###
     switch=tki.IntVar()###
     tax_switch=tki.Checkbutton(fr_switch,textvariable=switch_text,###
-                               variable=switch)###
+                               variable=switch,command=taxswitch)###
     tax_switch.pack(side='bottom')###
   
     #pack frames into main window & enter loop
@@ -65,17 +63,49 @@ def assignment11():
     reset()
     tki.mainloop()
 
+#add PA sales tax when box is checked
+def taxswitch():
+    tax=float(amount.get())*.08
+    if switch.get()==1:
+        switch_text.set('include PA sales tax (8%) :  '+
+                        str(format(tax,',.2f')))
+        if total_text.get().endswith('$ '):
+            pass
+        else: 
+            total=tax+float(amount.get())*(1+float(slide.get())/100)
+            total=str(format(total,',.2f'))
+            total_text.set('Total Amount:  $ '+total)
+    else:
+        switch_text.set('include PA sales tax (8%) :  ')
+        if total_text.get().endswith('$ '):
+            pass
+        else: 
+            total=float(amount.get())*(1+float(slide.get())/100)
+            total=str(format(total,',.2f'))
+            total_text.set('Total Amount:  $ '+total)
+
+
+
+     
+                
+
+
+        
+        
+
+
 #changes the "total" to 1.x times the entered amound (x comes from slider)
 def calculate():
     total=float(amount.get())*(1+float(slide.get())/100)
-    if switch.get()==1: total+=float(amount.get())*.08###
+    if switch.get()==1: total+=tax###
     total=str(format(total,',.2f'))
     total_text.set('Total Amount:  $ '+total)
     switch_text.set('include PA sales tax (8%):  $ '+###
-                    str(format(float(amount.get())*.08,',.2f')))###
+                    str(format(tax.get(),',.2f')))###
 
 #reset field, label, and slider position
 def reset():
+    tax=0
     slide.set(30)
     total_text.set('Total Amount:')
     amount.delete(0,'end')
