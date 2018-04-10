@@ -59,6 +59,7 @@ def shapes():
 #clear screer & reset selections
 def cls():
     canvas.delete('all')
+    color.set(None)
     shape.set(None)
 
 #gather mouse position at time of button press
