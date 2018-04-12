@@ -1,7 +1,18 @@
+'''
+customer spec: define class "Car" to accept 3 args for year, make, model; init
+        spped to 0; validate arg input & raise exceptions; create accessors
+        for all fields; define "accelerate" and "brake" functions; submit a
+        supplemental UML diagram
+added feature: variable speed increments enables more versatile re-use of the
+        Class; includes a "__str__" method
+'''
+
+
 class Car:
     #create a Car, accept arguments for year, make, model, set speed==0
     def __init__(self,year,make,model):
         self.__speed=0
+        #execption logic for invalid input types
         if not isinstance(year,int):
             raise TypeError('arg for "year" needs to be an Int')
         else:
@@ -17,17 +28,12 @@ class Car:
 
     #create getter funcs
     def get_speed(self): return self.__speed
-
     def get_year(self): return self.__year
-
     def get_make(self): return self.__make
-
     def get_model(self): return self.__model
 
     #create setter funcs
-    def accelerate(self,x):
-        self.__speed+=x
-
+    def accelerate(self,x): self.__speed+=x
     def brake(self,x):
         self.__speed-=x
         if self.__speed<0: self.__speed=0
