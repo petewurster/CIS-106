@@ -1,7 +1,7 @@
 class Car:
     #create a Car, accept arguments for year, make, model, set speed==0
     def __init__(self,year,make,model):
-        self.__speed=55
+        self.__speed=0
         if not isinstance(year,int):
             raise TypeError('arg for "year" needs to be an Int')
         else:
@@ -16,22 +16,23 @@ class Car:
         else: self.__model=model.title()
 
     #create getter funcs
-    def get_speed(): return self.__speed
+    def get_speed(self): return self.__speed
 
-    def get_year(): return self.__year
+    def get_year(self): return self.__year
 
-    def get_make(): return self.__make
+    def get_make(self): return self.__make
 
-    def get_model(): return self.__model
+    def get_model(self): return self.__model
 
     #create setter funcs
-    def accelerate(x): self.__speed+=x
+    def accelerate(self,x):
+        self.__speed+=x
 
-    def brake(x):
+    def brake(self,x):
         self.__speed-=x
         if self.__speed<0: self.__speed=0
 
     #what am i?
     def __str__(self):
         return 'You\'re driving a '+str(self.__year)+' '+\
-               str(self.__make)+' '+str(self.__model)+'@'+str(self.__speed)
+               str(self.__make)+' '+str(self.__model)+'.'
