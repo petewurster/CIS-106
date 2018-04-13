@@ -27,7 +27,7 @@ def assignment_13():
     entrylbl.pack(side='right')
 
     entry=t.Entry(mainentry,width=6)
-    #use Class accessor to display "__ftemp"
+    '''     use Class accessor to display "__ftemp"     '''
     entry.insert(0,converter.gettemperature())
     entry.pack(side='right')
 
@@ -68,9 +68,9 @@ def assignment_13():
 def enterkey(event): convert()
 
 def convert():
-    #use mutator to set internal Class temp
+    '''     use mutator to set internal Class temp      '''
     converter.settemperature(float(entry.get()))
-    #use Class accessors to display converted results
+    '''     use Class accessors to display converted results    '''
     celcius.set('= '+format(converter.tocelcius(),'.2f'))
     kelvin.set('= '+format(converter.tokelvin(),'.2f'))
 

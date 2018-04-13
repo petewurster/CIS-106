@@ -4,8 +4,7 @@ Wurster
 
 class Temperature:
     #create a Temperature conversion object
-    def __init__(self):
-        self.__ftemp=1.0
+    def __init__(self): self.__ftemp=1.0
 
     #create setter func
     def settemperature(self,ftempin): self.__ftemp=ftempin
