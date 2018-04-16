@@ -10,7 +10,7 @@ class Temperature:
     def settemperature(self,ftempin):
         #reject invalid entries
         try: self.__ftemp=float(ftempin)
-        except Exception as error: print(error) 
+        except Exception as error: print('\t',error) 
 
     #create getter funcs
     def gettemperature(self): return self.__ftemp

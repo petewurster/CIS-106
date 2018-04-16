@@ -25,9 +25,9 @@ def assignment_13():
 
     entrylbl=t.Label(mainentry,text='° Fahrenheit')
     entrylbl.pack(side='right')
-
+    
     entry=t.Entry(mainentry,width=6)
-#   use Class accessor to display "__ftemp"
+    #use Class accessor to display "__ftemp"
     entry.insert(0,converter.gettemperature())
     entry.pack(side='right')
 
@@ -55,7 +55,7 @@ def assignment_13():
 
     #set triggers
     action=t.Button(main,text='Convert',command=convert)
-    console=t.Button(main,text='use CLI',command=cli)
+    console=t.Button(main,text='switch to CLI',command=cli)
     quitter=t.Button(main,text='Quit',command=exit)
     main.bind('<Return>',enterkey)
 
@@ -68,24 +68,34 @@ def assignment_13():
     quitter.pack(side='right')
     t.mainloop()
 
-#use command line interface to interact w/Temperature object
+#use command line to interact w/Temperature object
 def cli():
     #close GUI window to minimize user distraction
     main.destroy()
 
-    print('Enter a temperature to convert ["exit" to quit]')
+    #create new Temperature object & loop for more conversions
+    cliTemp=temperature.Temperature()
+    
     x=''
     while x.lower()!='gui':
-#       use Class accessors to display converted results
-        print('°F = ',format(converter.gettemperature(),'.2f'))
-        print('°C = ',format(converter.tocelcius(),'.2f'))
-        print('°K = ',format(converter.tokelvin(),'.2f'))
-        x=input('° Fahrenheit==> ')
+        #use Class accessors to display converted results
+        print('\tWhen °F = ',format(cliTemp.gettemperature(),'.2f'),'...'
+              ' °C = ',format(cliTemp.tocelcius(),'.2f'),' and °K = ',
+              format(cliTemp.tokelvin(),'.2f'),sep='')
+
+        #prompt user
+        if x=='': print('\n["exit" quits; "gui" restarts GUI]'
+                        '\nEnter a temperature to convert:')
+        x=input('\n°Fahrenheit==> ')
+        
         #quit program
         if x.lower()=='exit': exit()
-#       use mutator to set internal Class temp
-        converter.settemperature(x)
+        
+        #use mutator to set internal Class temp
+        cliTemp.settemperature(x)
+        
     #re-launch GUI
+    del cliTemp
     assignment_13()
 
 #define conversion funcs
