@@ -10,7 +10,7 @@ import temperature
 #main prog as func
 def assignment_13():
     #declare relevant globals
-    global converter,entry,celcius,kelvin
+    global main,converter,entry,celcius,kelvin
 
     #create instance of Tepmerature object
     converter=temperature.Temperature()
@@ -18,7 +18,7 @@ def assignment_13():
     #create GUI
     main=t.Tk()
     main.title('Wurster')
-    main.geometry('210x100')
+    main.geometry('210x115')
 
     #build entry box
     mainentry=t.Frame(main)
@@ -27,7 +27,7 @@ def assignment_13():
     entrylbl.pack(side='right')
 
     entry=t.Entry(mainentry,width=6)
-    '''     use Class accessor to display "__ftemp"     '''
+#   use Class accessor to display "__ftemp"
     entry.insert(0,converter.gettemperature())
     entry.pack(side='right')
 
@@ -53,8 +53,10 @@ def assignment_13():
     klbl=t.Label(mainkvn,text='° Kelvin.')
     klbl.pack(side='left')
 
-    #set conversion triggers
+    #set triggers
     action=t.Button(main,text='Convert',command=convert)
+    console=t.Button(main,text='use CLI',command=cli)
+    quitter=t.Button(main,text='Quit',command=exit)
     main.bind('<Return>',enterkey)
 
     #pack & play
@@ -62,15 +64,37 @@ def assignment_13():
     maincel.pack()
     mainkvn.pack()
     action.pack()
+    console.pack(side='right')
+    quitter.pack(side='right')
     t.mainloop()
+
+#use command line interface to interact w/Temperature object
+def cli():
+    #close GUI window to minimize user distraction
+    main.destroy()
+
+    print('Enter a temperature to convert ["exit" to quit]')
+    x=''
+    while x.lower()!='gui':
+#       use Class accessors to display converted results
+        print('°F = ',format(converter.gettemperature(),'.2f'))
+        print('°C = ',format(converter.tocelcius(),'.2f'))
+        print('°K = ',format(converter.tokelvin(),'.2f'))
+        x=input('° Fahrenheit==> ')
+        #quit program
+        if x.lower()=='exit': exit()
+#       use mutator to set internal Class temp
+        converter.settemperature(x)
+    #re-launch GUI
+    assignment_13()
 
 #define conversion funcs
 def enterkey(event): convert()
 
 def convert():
-    '''     use mutator to set internal Class temp      '''
-    converter.settemperature(float(entry.get()))
-    '''     use Class accessors to display converted results    '''
+#   use mutator to set internal Class temp
+    converter.settemperature(entry.get())
+#   use Class accessors to display converted results
     celcius.set('= '+format(converter.tocelcius(),'.2f'))
     kelvin.set('= '+format(converter.tokelvin(),'.2f'))
 

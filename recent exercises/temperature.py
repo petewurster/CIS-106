@@ -7,7 +7,8 @@ class Temperature:
     def __init__(self): self.__ftemp=1.0
 
     #create setter func
-    def settemperature(self,ftempin): 
+    def settemperature(self,ftempin):
+        #reject invalid entries
         try: self.__ftemp=float(ftempin)
         except Exception as error: print(error) 
 
@@ -15,4 +16,3 @@ class Temperature:
     def gettemperature(self): return self.__ftemp
     def tocelcius(self): return (self.__ftemp-32)*(5/9)
     def tokelvin(self): return (self.__ftemp+459.67)*(5/9)
-    

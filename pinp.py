@@ -17,10 +17,10 @@ returns False when proscribed validation specs are encountered'''
 def isvalid(test,ok='anso',fi=None,hi=None,lo=None,mu=None):
     #test for float & int conversion
     if fi=='f':
-        try: test=float(tested)
+        try: test=float(test)
         except: return False
     if fi=='i':
-        try: test=int(float(tested))
+        try: test=int(float(test))
         except: return False
     #without menu:
     if mu==None:
